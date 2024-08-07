@@ -1,25 +1,20 @@
 const cron = require("node-cron");
 const express = require("express");
-const { claimMission } = require("./func/ClaimMission");
-const { claimOfflineProfit } = require("./func/ClaimOfflineProfit");
-const { checkValidToken, validateToken } = require("./func/CheckValidToken");
-const { buyAnimal } = require("./func/BuyAnimal");
-const { buyFactory } = require("./func/BuyFactory");
 const { configDotenv } = require("dotenv");
+const { checkInToday } = require("./func/checkInToday");
+const { dailySpinner } = require("./func/dailySpinner");
+const { claimFarming } = require("./func/claimFarming");
+const { crushLocker } = require("./func/crushLocker");
 configDotenv();
 
-async function main() {
-  await claimMission();
-  await claimOfflineProfit();
-  await buyAnimal();
-  console.log(`\n[ BOT ] : Task complete please wait 1 hour...\n`);
-}
-// Schedule the task to run every hour on the hour
-main();
-
-cron.schedule("0 * * * *", claimMission);
-cron.schedule("0 */3 * * *", claimOfflineProfit);
-cron.schedule("0 * * * *", buyAnimal);
+checkInToday();
+dailySpinner();
+claimFarming();
+crushLocker();
+cron.schedule("0 * * * *", checkInToday);
+cron.schedule("0 * * * *", dailySpinner);
+cron.schedule("0 * * * *", claimFarming);
+cron.schedule("0 * * * *", crushLocker);
 
 // Start the server
 const port = process.env.PORT || 103;
