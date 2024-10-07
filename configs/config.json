@@ -1,5 +1,8 @@
 [
   {
-    "token": ""
+    "token": "",
+    "boost": {
+      "enable": false
+    }
   }
 ]

@@ -4,19 +4,33 @@ const fs = require("fs").promises;
 configDotenv();
 
 exports.getTokens = async () => {
+  const API_AUTH = "https://app.secondlive.world/api/user/telegram-login";
+
   try {
     const data = await fs.readFile("configs/config.json", "utf-8");
     const tokens = JSON.parse(data);
-    tokens.map((item, index) => {
-      console.log(`\n[ Token ${index + 1} ] : ${item.token}`);
-    });
-    console.log(`[ Total tokens ] : ${tokens.length}`);
+    const authToken = [];
 
-    return tokens;
+    for (const token of tokens) {
+      try {
+        const response = await axios.post(API_AUTH, {
+          invite_code: "",
+          telegram_data: token.token,
+          username: "dk_zhen2",
+          photo_url: "",
+        });
+
+        const auth = response.data.data.access_token;
+
+        authToken.push({ token: auth });
+      } catch (error) {
+        console.log(
+          `[ Error ] : Token not valid. Response code : ${error.response.status} `
+        );
+      }
+    }
+    return authToken;
   } catch (error) {
-    console.log(
-      `[ Error ] : Token not found, please add token on configs/config.json`
-    );
-    return null;
+    console.log(error.message);
   }
 };
