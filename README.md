@@ -29,10 +29,10 @@ git clone https://github.com/dkzhen/secondlive-bot.git
 ```json
 [
   {
-    "token": "eyJh"
-  },
-  {
-    "token": "eyJh"
+    "token": "queryid",
+    "boost": {
+      "enable": false
+    }
   }
 ]
 ```
@@ -51,16 +51,16 @@ npm run start
 
 [ WARNING ] this bot in development stage, if bot error you can try again. some error or bug will be fixed.
 
-### Token authorization
+### Token Query
 
-You can found on inspact element [F12] from telegram web. open the bot and see [ `on Headers Authorization from api request from cowtopia` ]
+You can found on inspact element [F12] from telegram web. open the bot and see [ `on application - session storage -__telegram__initParams - tgWebAppData ` ]
 
-- `Authorization: eyJ..`
+- `query_id=AAFKwhUiAAAA`
 
-- example Authorization
+- example query
 
 ```json
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3YWxsZXRfYWRkcmVzcyI6IjB4ZkM3NEQzMkY3NzZBNDY5NzQ2ODA5MmI3ZmUzYzRjMDk4ODIzNTk3OSIsInVzZXJfaWQiOiI2NjcyNWJjMTQzNDRhZTJmMWEwNDdmZjUiLCJ0Z19pZCI6IjE0OTMyMzExMTUiLCJ1c2VybmFtZSI6IjE0OTMyMzExMTUiLCJpYXQiOjE3MjA1MTQ2MjAsImV4cCI6MTcyMTExOTQyMH0.1AE50yLVEw_Eda1NbpvyojhQ0oLq4hm8vJEAXKx8zMA"
+"query_id=AAFKwhUiAAAAAErCFSIcPoUl&user=%7B%22id%22%3A571851338%2C%22first_name%22%3A%22%21Zhen%20%7C%20RG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22dk_zhen%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1721993224&hash=b5b6ea6964dbd45604d1eb29b1498df6d24b6a6c0a5f1bddf05684d7"
 ```
 
 ### Contact
@@ -70,3 +70,5 @@ You can contact me for more information or report an issue.
 - [GitHub](https://github.com/dkzhen)
 
 - [Telegram](https://t.me/dk_zhen2)
+
+- [Telegram Channel](https://t.me/cryptoporia)
