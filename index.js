@@ -41,7 +41,7 @@ cron.schedule("0 * * * *", dailySpinner);
 cron.schedule("0 * * * *", claimFarming);
 
 // Start the server
-const port = process.env.PORT || 103;
+const port = process.env.PORT || 2000;
 const app = express();
 
 app.get("/", (req, res) => {
